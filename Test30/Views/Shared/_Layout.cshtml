@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+
+@{ if (HttpContext.Current.Session["usedID"] == null)
+
+	{
+
+		<!--
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				@Html.ActionLink("Count Your Eggs", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "navbar-brand" })
+					@Html.ActionLink("Connect", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })
+					@Html.ActionLink("Products Page", "ProductsPage", "Home", new { area = "" }, new { @class = "navbar-brand" })
+					@Html.ActionLink("Login / Register", "Index", "Login", new { area = "" }, new { @class = "navbar-brand pull-right" })
+
+
+
+
+				</ul>
+			</div>
+		-->
+		<div class="body-content">
+			@RenderBody()
+		</div>
+	}
+}
+
+
+@{ if (HttpContext.Current.Session["usedID"] != null)
+
+	{
+		<head>
+			<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>@ViewBag.Title - Count Your Eggs</title>
+			<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+			@Styles.Render("~/Content/css")
+			@Scripts.Render("~/bundles/modernizr")
+		</head>
+		<body>
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" id="navbar-brand" href="@Url.Action("Index", "Home")"><img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cye-initials-small-white.png?raw=true" id="navlogo" alt="Count Your Eggs" width="115px"></a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
+							<li>@Html.ActionLink("Items", "Index", "Items")</li>
+							<li>@Html.ActionLink("Invoices", "Index", "Invoices")</li>
+							<li>@Html.ActionLink("Invoice Items", "Index", "InvoiceItems")</li>
+							<li>@Html.ActionLink("Payments", "Index", "PayBridges")</li>
+							<li>@Html.ActionLink("Receipts", "Index", "Receipts")</li>
+
+
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li>@Html.ActionLink("Logout", "LogOut", "Login", new { area = "" }, new { @class = "navbar-brand pull-right" })</li>
+						</ul>
+					</div>
+
+
+
+
+
+
+
+
+
+				</div>
+			</div>
+
+
+
+			<div class="container body-content">
+				@RenderBody()
+				<hr class="internal-footer" />
+				<footer class="internal-footer">
+					<p>&copy; @DateTime.Now.Year - Count Your Eggs</p>
+				</footer>
+			</div>
+
+			@Scripts.Render("~/bundles/jquery")
+			@Scripts.Render("~/bundles/bootstrap")
+			@RenderSection("scripts", required: false)
+		</body>
+	}
+
+}
+</html>

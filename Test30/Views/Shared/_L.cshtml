@@ -1,0 +1,77 @@
+﻿@model Test30.Models.User
+@{
+	ViewBag.Title = "Index";
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+</head>
+<body>
+
+	<div id="login-div">
+		@using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
+		{
+
+			<table>
+				<tr>
+					<td></td>
+					<td style="text-decoration:underline">Count Your Eggs</td>
+				</tr>
+				<tr>
+					<td>
+						@Html.LabelFor(model => model.UserName)
+					</td>
+					<td>
+						@Html.EditorFor(model => model.UserName)
+					</td>
+
+				</tr>
+				<tr>
+					<td>@Html.ValidationMessageFor(model => model.UserName)</td>
+
+				</tr>
+				<tr>
+					<td>
+						@Html.LabelFor(model => model.Password)
+					</td>
+					<td>
+						@Html.EditorFor(model => model.Password)
+					</td>
+
+				</tr>
+				<tr>
+					<td>@Html.ValidationMessageFor(model => model.Password)</td>
+
+				</tr>
+
+				<tr>
+					<td></td>
+					<td>
+						<input type="submit" name="name" value="Login" />
+						<input type="reset" name="name" value="Clear" />
+					</td>
+
+				</tr>
+
+			</table>
+
+		}
+
+
+	</div>
+
+	<script src="~/Scripts/bootstrap.js"></script>
+	<script src="~/Scripts/bootstrap.min.js"></script>
+	<script src="~/Scripts/jquery-3.3.1.intellisense.js"></script>
+	<script src="~/Scripts/jquery-3.3.1.js"></script>
+	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+	<script src="~/Scripts/jquery-3.3.1.slim.js"></script>
+	<script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
+	<script src="~/Scripts/modernizr-2.8.3.js"></script>
+</body>
+</html>

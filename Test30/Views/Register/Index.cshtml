@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Test30.Models.User>
+
+@{
+	ViewBag.Title = "Index";
+	if (HttpContext.Current.Session["usedID"] == null || HttpContext.Current.Session["usedID"] != null)
+	{ Response.Redirect("~/Login/Index"); }
+}
+
+<h2>Register an account</h2>
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.UserName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Password)
+		</th>
+		<th></th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.UserName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Password)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
+				@Html.ActionLink("Details", "Details", new { id = item.UserID }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+			</td>
+		</tr>
+	}
+
+</table>

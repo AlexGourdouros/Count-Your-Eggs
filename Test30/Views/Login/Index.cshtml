@@ -1,0 +1,236 @@
+﻿@model Test30.Models.User
+
+@{
+	if (HttpContext.Current.Session["usedID"] != null)
+	{ Layout = null; }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SignUp/Login</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap" rel="stylesheet">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			font-family: 'Montserrat',sans-serif;
+		}
+
+		body {
+			height: 100%;
+			width: 100%;
+			background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/login-background.png?raw=true");
+			background-position: center;
+			background-size: cover;
+			background-attachment: fixed;
+			position: absolute;
+		}
+
+		.form-box {
+			width: 350px;
+			height: 420px;
+			position: relative;
+			margin: 8% auto;
+			background: white;
+			padding: 5px;
+			border-radius: 5px;
+			overflow: hidden;
+		}
+
+		.initials {
+			width: 150px;
+			margin: 30px auto 25px;
+		}
+
+		.button-box {
+			width: 220px;
+			margin: 30px auto;
+			position: relative;
+			box-shadow: 0 0 20px 9px hsla(17,100%,57%,0.2);
+			border-radius: 30px;
+		}
+
+		.toggle-btn {
+			padding: 10px 30px;
+			cursor: pointer;
+			background: transparent;
+			border: 0;
+			outline: none;
+			position: relative;
+		}
+
+		#btn {
+			top: 0;
+			left: 0;
+			position: absolute;
+			width: 110px;
+			height: 100%;
+			background: linear-gradient(to right, #77B300, #FF8033);
+			border-radius: 30px;
+			transition: 0.5s;
+		}
+
+		.control-label {
+			color: #999999;
+		}
+
+		.input-group {
+			top: 190px;
+			position: absolute;
+			width: 250px;
+			transition: 0.5s;
+		}
+
+		.form-control {
+			width: 100%;
+			padding: 10px 0;
+			margin: 5px 0;
+			border-left: 0;
+			border-top: 0;
+			border-right: 0;
+			border-bottom: 1px solid #999999;
+			outline: none;
+			background: transparent;
+		}
+
+		.submit-btn {
+			width: 85%;
+			padding: 10px 30px;
+			cursor: pointer;
+			display: block;
+			margin: 35px 25px;
+			background: linear-gradient(to right, #77B300, #FF8033);
+			border: 0;
+			outline: none;
+			border-radius: 30px;
+		}
+
+		span {
+			color: #fff;
+			font-size: 12px;
+			bottom: 68px;
+			position: absolute;
+		}
+
+		#signup {
+			left: 50px;
+		}
+
+		#login {
+			left: 450px;
+		}
+
+		.internal-footer {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="form-box">
+		<div class="initials"><a href="@Url.Action("Index", "Home")"><img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/egginitialssmall.png?raw=true" alt="Count Your Eggs" width="150px"></a></div>
+		<div class="button-box">
+			<div id="btn"></div>
+			<button type="button" class="toggle-btn" onclick="login()">Sign Up</button>
+			<button type="button" class="toggle-btn" onclick="signup()">Log In</button>
+
+		</div>
+		<div id="signup" class="input-group">
+			@using (Html.BeginForm("Create", "Register", FormMethod.Post))
+			{
+				@Html.AntiForgeryToken()
+				<div class="form-horizontal">
+					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+					<div class="form-group">
+						@Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+						</div>
+					</div>
+					<label></label>@ViewBag.Message
+					<div class="form-group">
+						@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+						</div>
+					</div>
+					@if (TempData["Fail"] != null)
+					{
+						<center>
+
+							<p class="alert alert-success" id="successMessage">@TempData["Fail"]</p>
+
+						</center>
+					}
+					@if (TempData["Success"] != null)
+					{
+						<center>
+
+							<p class="alert alert-success" id="successMessage">@TempData["Success"]</p>
+
+						</center>
+					}					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+							<input type="submit" value="Create" class="submit-btn" />
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+		<div id="login" class="input-group">
+			@using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
+			{
+				<div class="form-horizontal">
+					<div class="form-group">
+						@Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.ValidationMessageFor(model => model.UserName)
+						</div>
+					</div>
+					<div class="form-group">
+						@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.ValidationMessageFor(model => model.Password)
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+							<input type="submit" name="name" class="submit-btn" value="Login" />
+						</div>
+					</div>
+				</div>
+			}
+
+		</div>
+	</div>
+	<script>
+		var x = document.getElementById("signup");
+		var y = document.getElementById("login");
+		var z = document.getElementById("btn");
+		function signup() {
+			x.style.left = "-400px";
+			y.style.left = "50px";
+			z.style.left = "110px";
+		}
+		function login() {
+			x.style.left = "50px";
+			y.style.left = "450px";
+			z.style.left = "0";
+		}
+	</script>
+	<script src="~/Scripts/bootstrap.js"></script>
+	<script src="~/Scripts/bootstrap.min.js"></script>
+	<script src="~/Scripts/jquery-3.3.1.intellisense.js"></script>
+	<script src="~/Scripts/jquery-3.3.1.js"></script>
+	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+	<script src="~/Scripts/jquery-3.3.1.slim.js"></script>
+	<script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
+	<script src="~/Scripts/modernizr-2.8.3.js"></script>
+</body>
+</html>

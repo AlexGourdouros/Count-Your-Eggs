@@ -1,0 +1,54 @@
+﻿@model Test30.Models.PayBridge
+
+@{
+    ViewBag.Title = "Details";
+	if (HttpContext.Current.Session["usedID"] == null)
+	{ Response.Redirect("~/Login/Index", false); }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PayBridge</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Invoice.InvoiceID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Invoice.InvoiceID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment1.PaymentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment1.PaymentType)
+        </dd>
+
+       
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PaybridgeID }, new { @class = "clickme" }) <br /><br />
+    <span class="glyphicon glyphicon-triangle-left reglink"></span>@Html.ActionLink("Back to List", "Index", new { area = "" }, new { @class = "reglink" })
+</p>

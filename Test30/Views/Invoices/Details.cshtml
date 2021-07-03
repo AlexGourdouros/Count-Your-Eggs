@@ -1,0 +1,78 @@
+﻿@model Test30.Models.Invoice
+
+@{
+    ViewBag.Title = "Details";
+	if (HttpContext.Current.Session["usedID"] == null)
+	{ Response.Redirect("~/Login/Index", false); }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Invoice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalDue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalDue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemsReceived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemsReceived)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Distributor.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Distributor.Name)
+        </dd>
+
+      
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InvoiceID }, new { @class = "clickme" }) <br /><br />
+    <span class="glyphicon glyphicon-triangle-left reglink"></span>@Html.ActionLink("Back to List", "Index", new { area = "" }, new { @class = "reglink" })
+</p>

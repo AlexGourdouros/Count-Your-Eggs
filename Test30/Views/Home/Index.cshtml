@@ -1,0 +1,266 @@
+﻿@{
+	if (HttpContext.Current.Session["usedID"] != null)
+	{ Layout = null; }
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Count Your Eggs Inventory Management</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	@Styles.Render("~/Content2/count-your-eggs-stylesheet.css")
+</head>
+
+<body>
+	<div class="hero-image" id="hero-image-home">
+		<div class="hero-text">
+			<picture>
+				<source media="(max-width: 767px)" srcset="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cye-title-img-mobile.png?raw=true">
+				<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cye-title-img.png?raw=true" id="titlelogo" width="80%" alt="Count Your Eggs Inventory Management">
+			</picture>
+			<h3 id="hometext">Whether you run a coffee shop, all-day cafe, open-air biergarten, greasy spoon, or farm-to-table eatery, CYE can meet your inventory management needs.</h3>
+			<button class="btn btn-success btn-lg"><a href="@Url.Action("Contact", "Home")">Request a Quote Today!</a></button>
+		</div>
+	</div>
+	<nav class="navbar">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cye-initials.png?raw=true" id="navlogo" alt="Count Your Eggs" width="115px"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+					<li>@Html.ActionLink("Pricing", "ProductsPage", "Home")</li>
+					<li>@Html.ActionLink("About", "About", "Home")</li>
+					<li>@Html.ActionLink("Connect", "Contact", "Home")</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+
+
+					@{ if (HttpContext.Current.Session["usedID"] == null)
+
+						{
+							<li>
+								<a href=@Url.Action("Index", "Login")><span class="glyphicon glyphicon-user"></span> Login/Register</a>
+							</li>
+}
+					}
+
+					@{ if (HttpContext.Current.Session["usedID"] != null)
+						{
+							<li>
+								<a href=@Url.Action("Index", "Dashboard")><span class="glyphicon glyphicon-list-alt"></span> Inventory</a>
+							</li>
+							<li>
+								<a href="@Url.Action("LogOut","Login")"><span class="glyphicon glyphicon-user"></span> Logout</a>
+							</li>
+						}
+					}
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container-fluid graywhite">
+		<div class="module" id="tagline">
+			<p id="tag1">Never make your servers say</p>
+			<blockquote>I'm sorry, we're out of the quiche...</blockquote>
+			<p id="tag2">again!</p>
+		</div>
+		<div class="parallax"></div>
+	</div>
+
+	<div class="container-fluid graywhite">
+		<div class="container">
+			<div id="myCarousel" class="carousel slide module" data-ride="carousel" data-interval="15000">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+					<li data-target="#myCarousel" data-slide-to="3"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active">
+						<div class="bubble">
+							<blockquote>
+								Count Your Eggs saved my restaurant! We had a reputation for always running out of the weekend specials before Sunday brunch. We even had a review in the local paper titled ‘Tasty Spot’s sandwiches are great—if you can get one.’ Now thanks to CYE, we are turning things around, and the reviews are much better!
+							</blockquote>
+							<div></div>
+							<cite>Anna Karenina, manager at Tasty Spot</cite>
+						</div>
+					</div>
+
+					<div class="item">
+						<div class="bubble">
+							<blockquote>Count Your Eggs’s spoilage notification has saves me from running out of bananas more than once. The CYE interface tells me when it’s time to check the produce; I always used to forget until it was too late. Now I am always ready to serve up a banana split!</blockquote>
+							<div></div>
+							<cite>David Copperfield, owner of David’s Ice Cream</cite>
+						</div>
+					</div>
+
+					<div class="item">
+						<div class="bubble">
+							<blockquote>I didn’t realize we were always running out of goat cheese in the spring and mint in the summer, until I tried out Count Your Eggs analytics. Now I can see the trends, and I can anticipate when I need to order more of a particular ingredient. Thanks, Count Your Eggs!</blockquote>
+							<div></div>
+							<cite>Moll Flanders, owner of Fancy Café</cite>
+						</div>
+					</div>
+
+					<div class="item">
+						<div class="bubble">
+							<blockquote>Before I tried Count Your Eggs, I had a hard time keeping talented waitstaff.  Good servers don’t like saying ‘I’m sorry, we’re out’ over and over again. CYE doesn’t just keep my shelves full; it keeps morale high and staff turnover low.</blockquote>
+							<div></div>
+							<cite>Johnny Tremain, manager at The Sandwich Place</cite>
+						</div>
+					</div>
+				</div>
+
+				<!-- Left and right controls -->
+				<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#myCarousel" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="graywhite clearfix">
+		<a href="@Url.Action("ProductsPage", "Home")"><img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/productshomeimg.jpg?raw=true" alt="Inventory Management Products" class="left-image module" height="500px"></a>
+		<div class="pagetext module">
+			<h4><a href="@Url.Action("ProductsPage", "Home")">Products</a></h4>
+			<p>Count Your Eggs is an easy-to-use inventory management system designed specifically for the fast-paced world of your restaurant's back-of-house. CYE's specialized software monitors your inventory levels, anticipates spoilage, tracks trends in ingredient consumption, and generates purchase orders. <a href="@Url.Action("ProductsPage", "Home")">Click here for more information about our products and pricing.</a></p>
+		</div>
+	</div>
+	<div class="graywhite clearfix">
+		<a href="@Url.Action("About", "Home")"><img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/abouthomeimg.jpg?raw=true" alt="Back-of-house employees in a busy restaurant kitchen" class="right-image module" height="500px"></a>
+		<div class="pagetext module">
+			<h4><a href="@Url.Action("About", "Home")">About</a></h4>
+			<p>At Count Your Eggs, we understand the needs of the restaurant industry because we've been there. We built the kind of software we wish we had in our own workplaces. That's the Count Your Eggs difference. <a href="@Url.Action("About", "Home")">Click here to learn more about what sets us apart.</a></p>
+		</div>
+	</div>
+	<div class="graywhite clearfix">
+		<a href="@Url.Action("Contact", "Home")"><img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/connecthomeimg.jpg?raw=true" alt="A neon sign reading Kitchen Open" class="left-image module" height="500px"></a>
+		<div class="pagetext module">
+			<h4><a href="@Url.Action("Contact", "Home")">Connect</a></h4>
+			<p>Ready to learn more? We'd love to hear from you! Connect with us to receive an informational packet about Count Your Eggs and get a quote for your business. <a href="@Url.Action("Contact", "Home")">Click here to take the first step to a more efficient back-of house!</a></p>
+		</div>
+	</div>
+
+
+
+
+
+
+	<footer>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<a href="https://www.facebook.com/Count-Your-Eggs-Inventory-Management-107284634211664/" target="_blank" class="fa fa-facebook"></a>
+					<a href="https://twitter.com/counteggs" target="_blank" class="fa fa-twitter"></a>
+					<a href="@Url.Action("ComingSoon", "Home")" target="_blank" class="fa fa-youtube"></a>
+					<a href="@Url.Action("ComingSoon", "Home")" target="_blank" class="fa fa-instagram"></a>
+
+
+				</div>
+			</div>
+
+
+		</div>
+		<br>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-2 col-md-offset-3">
+
+					<ul>
+						<li>@Html.ActionLink("Home", "Index", "Home")</li>
+						<li>@Html.ActionLink("Pricing", "ProductsPage", "Home")</li>
+						<li><a href="@Url.Action("ComingSoon", "Home")">Terms of Service</a></li>
+						<li><a href="@Url.Action("ComingSoon", "Home")">Privacy Policy</a></li>
+						<li><a href="@Url.Action("ComingSoon", "Home")">Sitemap</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<ul>
+						<li>@Html.ActionLink("About", "About", "Home")</li>
+						<li><a href="@Url.Action("FAQ", "Home")">FAQ</a></li>
+						<li><a href="@Url.Action("ComingSoon", "Home")">Blog</a></li>
+						<li><a href="@Url.Action("ComingSoon", "Home")">Careers</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<ul>
+						<li>@Html.ActionLink("Connect", "Contact", "Home")</li>
+						<li><a href="tel:1-555-555-5555">Sales: (555) 555-55555</a></li>
+						<li><a href="tel:1-555-555-5555">Support: (555) 555-5555</a></li>
+						<li>555 Parham Rd.<br />Beverly Hills, CA 90210</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script>
+		(function ($) {
+
+
+
+			$.fn.visible = function (partial) {
+
+				var $t = $(this),
+					$w = $(window),
+					viewTop = $w.scrollTop(),
+					viewBottom = viewTop + $w.height(),
+					_top = $t.offset().top,
+					_bottom = _top + $t.height(),
+					compareTop = partial === true ? _bottom : _top,
+					compareBottom = partial === true ? _top : _bottom;
+
+				return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+
+			};
+
+		})(jQuery);
+
+		var win = $(window);
+
+		var allMods = $(".module");
+
+		allMods.each(function (i, el) {
+			var el = $(el);
+			if (el.visible(true)) {
+				el.addClass("already-visible");
+			}
+		});
+
+		win.scroll(function (event) {
+
+			allMods.each(function (i, el) {
+				var el = $(el);
+				if (el.visible(true)) {
+					el.addClass("come-in");
+				}
+			});
+
+		});
+	</script>
+</body>
+</html>

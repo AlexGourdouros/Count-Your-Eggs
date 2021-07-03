@@ -1,0 +1,46 @@
+﻿@model Test30.Models.UsedItem
+
+@{
+    ViewBag.Title = "Details";
+	if (HttpContext.Current.Session["usedID"] == null)
+	{ Response.Redirect("~/Login/Index", false); }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UsedItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateUsed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateUsed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.Name)
+        </dd>
+
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UsedID }, new { @class = "clickme" }) <br /><br />
+    <span class="glyphicon glyphicon-triangle-left reglink"></span>@Html.ActionLink("Back to List", "Index", new { area = "" }, new { @class = "reglink" })
+</p>

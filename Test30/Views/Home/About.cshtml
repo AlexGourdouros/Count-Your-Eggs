@@ -1,0 +1,250 @@
+﻿@{
+    if (HttpContext.Current.Session["usedID"] != null)
+    { Layout = null; }
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Count Your Eggs: About Us</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    @Styles.Render("~/Content2/count-your-eggs-stylesheet.css")
+</head>
+
+<body>
+    <div class="hero-image">
+        <div class="hero-text">
+            <picture>
+                <source media="(max-width: 767px)" srcset="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cye-title-img-mobile.png?raw=true">
+                <img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cye-title-img.png?raw=true" id="titlelogo" width="60%" alt="Count Your Eggs Inventory Management">
+            </picture>
+        </div>
+    </div>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cye-initials.png?raw=true" id="navlogo" alt="Count Your Eggs" width="115px"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Pricing", "ProductsPage", "Home")</li>
+                    <li class="active">@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Connect", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+
+                    @{ if (HttpContext.Current.Session["usedID"] == null)
+
+                        {
+                            <li>
+                                <a href=@Url.Action("Index", "Login")><span class="glyphicon glyphicon-user"></span> Login/Register</a>
+                            </li>
+                        }
+                    }
+
+                    @{ if (HttpContext.Current.Session["usedID"] != null)
+                        {
+                            <li>
+                                <a href=@Url.Action("Index", "Dashboard")><span class="glyphicon glyphicon-list-alt"></span> Inventory</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("LogOut","Login")"><span class="glyphicon glyphicon-user"></span> Logout</a>
+                            </li>
+                        }
+                    }
+
+
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" style="background: linear-gradient( #ffffff, rgba(255,117,34,0.60))">
+        <h1 style="text-shadow: 5px 5px 10px grey;font-size: 60px;  margin: 40px auto">The CYE Story</h1>
+        <div class="row">
+            <div class="col-md-5 col-md-offset-1 abouttext">
+                <blockquote>I’m sorry, we’re all out of that!  Can I interest you in something else?</blockquote>
+                <p>No one likes to hear these words in a restaurant. Customers hate to be disappointed. Servers hate to let their customers down. Restaurant managers and owners hate to see customers leave their establishments less likely to become regulars.</p>
+                <p>Curtis Farmer was tired of hearing these words, too. As a restaurant cook, he was tired of running out of ingredients. Curtis had worked in one small restaurant after another in the foodie destination city of Richmond, Virginia, and they all had one challenge in common: keeping up with inventory. As a Computer Programming student at J. Sergeant Reynolds Community College, Curtis knew there had to be a better way. So he reached out to his fellow programmer Alex Gourdouros; put together a dream team of web and app developers Cassidy Ryan, Desi Armstrong, Dina Farouk, Kenny Gatling, and Sarah Chapman; and Count Your Eggs Inventory Management System was born.</p>
+                <p>Count Your Eggs is built from the perspective of people who have worked in restaurants and know what kind of functionality is needed in a fast-paced back-of-house environment. CYE’s straightforward and user-friendly interface is designed to make inventory tracking easy for even the most rushed and least tech-savvy restaurateurs and their employees. Our philosophy at CYE is that better inventory management means more harmony in the back-of-house, more confident servers in the front-of-house, and more full and happy customers at your tables!</p>
+            </div>
+            <div class="col-md-5"><img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/zoomabout.png?raw=true" width="100%" alt="The CYE team hard at work wile socially distancing"></div>
+        </div>
+        <h3 class="module">Our Team</h3>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-2 col-sm-4 col-sm-offset-2">
+                <div class="card module">
+                    <img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/Desi.jpg?raw=true" alt="" width="100%">
+                    <div class="container">
+                        <h4 class="text-left">Desi Armstrong</h4>
+                        <p class="text-left">Hi! I'm Desi Armstrong, I am a Scrum Master | Web Developer. I believe in the transformative power of team collaboration and its ability to elevate projects. Good design and good relationships come from collaboration. We're excited to help you reach success. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-lg-offset-0 col-md-offset-0 col-sm-offset-0">
+                <div class="card module">
+                    <img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/Sarah.png?raw=true" alt="" width="100%">
+                    <div class="container">
+                        <h4 class="text-left">Sarah Chapman</h4>
+                        <p class="text-left">I’m a Web Designer and Developer with a background in writing. I believe that elegant design is an integral part of effective communication. When I’m not making websites, I like to hike mountains, bake sourdough bread, work in my herb garden, and play with my two cats.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2  col-sm-4 col-lg-offset-0 col-md-offset-0 col-sm-offset-2">
+                <div class="card module">
+                    <img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/Curtis.png?raw=true" alt="" width="100%">
+                    <div class="container">
+                        <h4 class="text-left">Curtis Farmer</h4>
+                        <p class="text-left">I am attending Reynolds Community College to obtain an associates degree in computer programming. I work part-time in the restaurant business and most recently waste management. I hope to use the experience and knowledge that I have gained toward obtaining a career in the computer programming and IT field. In my spare time I enjoy playing video games and working on 3D printers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2  col-sm-4 col-lg-offset-0 col-md-offset-0 col-sm-offset-0">
+                <div class="card module">
+                    <img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/Dina%20.png?raw=true" alt="" width="100%">
+                    <div class="container">
+                        <h4 class="text-left">Dina Farouk</h4>
+                        <p class="text-left">Nam at lectus urna duis convallis. Convallis convallis tellus id interdum velit laoreet. Pharetra et ultrices neque ornare aenean euismod. Massa tempor nec feugiat nisl pretium fusce id velit ut.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-3  col-sm-4 col-sm-offset-2">
+                <div class="card module">
+                    <img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/Kenny.jpg?raw=true" alt="" width="100%">
+                    <div class="container">
+                        <h4 class="text-left">Kenny Gatling</h4>
+                        <p class="text-left">Eget nulla facilisi etiam dignissim diam quis enim lobortis. Pellentesque elit ullamcorper dignissim cras. Quis commodo odio aenean sed adipiscing diam. Sagittis aliquam malesuada bibendum arcu vitae. Luctus accumsan tortor posuere ac ut.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2  col-sm-4 col-lg-offset-0 col-sm-offset-0">
+                <div class="card module">
+                    <img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/Alex.jpg?raw=true" alt="" width="100%">
+                    <div class="container">
+                        <h4 class="text-left">Alex Gourdouros</h4>
+                        <p class="text-left">I am currently a part time computer programming student at Reynolds and also programming part time for an internship with VCCS until the end of June.  I hope to achieve an associates degree from Reynolds, gain as much experience as I can and eventually go for a bachelor’s degree.  I also enjoy playing guitar, photoshop and skateboard.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2  col-sm-4 col-sm-offset-4 col-lg-offset-0 col-md-offset-0">
+                <div class="card module">
+                    <img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/Cassidy.jpg?raw=true" alt="" width="100%">
+                    <div class="container">
+                        <h4 class="text-left">Cassidy Ryan</h4>
+                        <p class="text-left">Hi, I'm Cassidy Ryan, I am a Web Developer. I have a very creative mind where I can input my ideas into a website to make it very creative. I am also a good team player when it comes to working with a team. Very excited to be helping out with reaching success.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href="https://www.facebook.com/Count-Your-Eggs-Inventory-Management-107284634211664/" target="_blank" class="fa fa-facebook"></a>
+                    <a href="https://twitter.com/counteggs" target="_blank" class="fa fa-twitter"></a>
+                    <a href="@Url.Action("ComingSoon", "Home")" target="_blank" class="fa fa-youtube"></a>
+                    <a href="@Url.Action("ComingSoon", "Home")" target="_blank" class="fa fa-instagram"></a>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-md-offset-3">
+
+                    <ul>
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Pricing", "ProductsPage", "Home")</li>
+                        <li><a href="@Url.Action("ComingSoon", "Home")">Terms of Service</a></li>
+                        <li><a href="@Url.Action("ComingSoon", "Home")">Privacy Policy</a></li>
+                        <li><a href="@Url.Action("ComingSoon", "Home")">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <ul>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li><a href="@Url.Action("FAQ", "Home")">FAQ</a></li>
+                        <li><a href="@Url.Action("ComingSoon", "Home")">Blog</a></li>
+                        <li><a href="@Url.Action("ComingSoon", "Home")">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <ul>
+                        <li>@Html.ActionLink("Connect", "Contact", "Home")</li>
+                        <li><a href="tel:1-555-555-5555">Sales: (555) 555-55555</a></li>
+                        <li><a href="tel:1-555-555-5555">Support: (555) 555-5555</a></li>
+                        <li>555 Parham Rd.<br />Beverly Hills, CA 90210</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        (function ($) {
+
+
+            $.fn.visible = function (partial) {
+
+                var $t = $(this),
+                    $w = $(window),
+                    viewTop = $w.scrollTop(),
+                    viewBottom = viewTop + $w.height(),
+                    _top = $t.offset().top,
+                    _bottom = _top + $t.height(),
+                    compareTop = partial === true ? _bottom : _top,
+                    compareBottom = partial === true ? _top : _bottom;
+
+                return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+
+            };
+
+        })(jQuery);
+
+        var win = $(window);
+
+        var allMods = $(".module");
+
+        allMods.each(function (i, el) {
+            var el = $(el);
+            if (el.visible(true)) {
+                el.addClass("already-visible");
+            }
+        });
+
+        win.scroll(function (event) {
+
+            allMods.each(function (i, el) {
+                var el = $(el);
+                if (el.visible(true)) {
+                    el.addClass("come-in");
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Test30.Models.Invoice>
+
+@{
+	ViewBag.Title = "Index";
+	if (HttpContext.Current.Session["usedID"] == null)
+	{ Response.Redirect("~/Login/Index"); }
+}
+
+<h2>Invoices</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filter by year.." title="Type in a name">
+
+<h1>@ViewBag.error</h1>
+<p>
+	@Html.ActionLink("Create New", "Create", new { area = "" }, new { @class = "clickme" })
+</p>
+<table class="table" id="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.InvoiceCreated)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TotalPaid)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TotalDue)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Total)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ItemsReceived)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.InvoiceNumber)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.InvoiceID)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Distributor.Name)
+		</th>
+		@{/*<th>
+  @Html.DisplayNameFor(model => model.Status.Name)
+  </th>*/}
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+		{
+<tr>
+	<td>
+		@Html.DisplayFor(modelItem => item.InvoiceCreated)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.TotalPaid)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.TotalDue)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.Total)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.ItemsReceived)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.InvoiceNumber)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.InvoiceID)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.Distributor.Name)
+	</td>
+	@{/*<td>
+
+		  @Html.DisplayFor(modelItem => item.Status.Name)
+
+	  </td>*/}
+	<td>
+		@Html.ActionLink("Edit", "Edit", new { id = item.InvoiceID }) |
+		@Html.ActionLink("Details", "Details", new { id = item.InvoiceID }) |
+		@Html.ActionLink("Delete", "Delete", new { id = item.InvoiceID })
+	</td>
+</tr>
+	}
+
+</table>
+<script>
+	function myFunction() {
+		var input, filter, table, tr, td, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("table");
+		tr = table.getElementsByTagName("tr");
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[0];
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}
+		}
+	}
+</script>

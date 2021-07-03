@@ -1,0 +1,210 @@
+﻿@{
+	if (HttpContext.Current.Session["usedID"] != null)
+	{ Layout = null; }
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Count Your Eggs Inventory Management Products</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	@Styles.Render("~/Content2/count-your-eggs-stylesheet.css")
+</head>
+
+<body>
+	<div class="hero-image">
+		<div class="hero-text">
+			<picture>
+				<source media="(max-width: 767px)" srcset="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cye-title-img-mobile.png?raw=true">
+				<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cye-title-img.png?raw=true" id="titlelogo" width="60%" alt="Count Your Eggs Inventory Management">
+			</picture>
+		</div>
+	</div>
+	<nav class="navbar">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cye-initials.png?raw=true" id="navlogo" alt="Count Your Eggs" width="115px"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li>@Html.ActionLink("Home", "Index", "Home")</li>
+					<li class="active">@Html.ActionLink("Pricing", "ProductsPage", "Home")</li>
+					<li>@Html.ActionLink("About", "About", "Home")</li>
+					<li>@Html.ActionLink("Connect", "Contact", "Home")</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+
+
+					@{ if (HttpContext.Current.Session["usedID"] == null)
+
+						{
+							<li>
+								<a href=@Url.Action("Index", "Login")><span class="glyphicon glyphicon-user"></span> Login/Register</a>
+							</li>
+						}
+					}
+
+					@{ if (HttpContext.Current.Session["usedID"] != null)
+						{
+							<li>
+								<a href=@Url.Action("Index", "Dashboard")><span class="glyphicon glyphicon-list-alt"></span> Inventory</a>
+							</li>
+							<li>
+								<a href="@Url.Action("LogOut","Login")"><span class="glyphicon glyphicon-user"></span> Logout</a>
+							</li>
+						}
+					}
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div style="background: linear-gradient( #ffffff, rgba(255,117,34,0.60))">
+		<h1 style="text-shadow: 5px 5px 10px grey;font-size: 60px; margin: 40px auto;">Products &amp; Pricing</h1>
+		<div class="container" style="background: #ffffff">
+			<div class="row">
+				<div class="col-sm-4" style="outline: 1px solid #D0D0D0; padding-right:10%; padding-bottom: 20px">
+					<h3>Free</h3>
+					<h1>$0<small class="text-muted"> /month</small></h1>
+					<hr>
+					<p style="text-align: left; padding-left: 25px">
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						One User <br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Inventory Management<br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Reporting/Analytics<br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Training <br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Free 24/7/365 support<br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Free &amp; easy product updates <br>
+					</p><br>
+						<button class="btn btn-success"><a href="@Url.Action("Index", "Login")">Sign up for free</a></button>
+					<br><br>
+				</div>
+				<div class="col-sm-4" style="outline: 1px solid #D0D0D0; padding-bottom: 20px">
+					<h3>Pro</h3>
+					<h1>$30<small class="text-muted"> /month</small></h1>
+					<hr>
+					<p style="text-align: left; padding-left: 25px">
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Three Users<br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Recipe Management<br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Menu Management<br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Customer Relations Management (CRM) <br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Staff Management <br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Nutrition &amp; Allergen Management<br>
+					</p><br>
+						<button class="btn btn-success"><a href="@Url.Action("Contact", "Home")">Get started</a></button>
+					<br><br>
+				</div>
+				<div class="col-sm-4" style="outline: 1px solid #D0D0D0; padding-bottom: 20px">
+					<h3>Enterprise</h3>
+					<h1>$75<small class="text-muted"> /month</small></h1>
+					<hr>
+					<p style="text-align: left; padding-left: 25px">
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Unlimited Users<br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Point of Sale <br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Tableside Ordering <br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Payment Processing Integrations <br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Online Ordering<br>
+						<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/cyecheck.png?raw=true" width="17px" alt="Check Icon">
+						Cloud Hybrid System<br>
+					</p><br>
+						<button class="btn btn-success"><a href="@Url.Action("Contact", "Home")">Contact us</a></button>
+					<br><br>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<!--
+				<div class="odd-div clearfix">
+					<img src="https://github.com/Desiarmstrong/Capstone-Webpages/blob/master/productsimg.png?raw=true" alt="eggs" class="right-image" width="700px">
+					<div class="pagetext"><h5><a href="">Pricing</a></h5>
+					<p>CYE has been designed to meet the unique needs and specific demands of the restaurant industry.
+					<br>Restaurants buy Count Your Eggs Inventory Management because they want a management syetem
+					<br>that can help increase sales, improve back of the house management, and inform business decisions</p>
+					</div>
+				</div>
+		-->
+	</div>
+	</div>
+	<footer>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<a href="https://www.facebook.com/Count-Your-Eggs-Inventory-Management-107284634211664/" target="_blank" class="fa fa-facebook"></a>
+					<a href="https://twitter.com/counteggs" target="_blank" class="fa fa-twitter"></a>
+					<a href="@Url.Action("ComingSoon", "Home")" target="_blank" class="fa fa-youtube"></a>
+					<a href="@Url.Action("ComingSoon", "Home")" target="_blank" class="fa fa-instagram"></a>
+
+
+				</div>
+			</div>
+
+
+		</div>
+		<br>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-2 col-md-offset-3">
+
+					<ul>
+						<li>@Html.ActionLink("Home", "Index", "Home")</li>
+						<li>@Html.ActionLink("Pricing", "ProductsPage", "Home")</li>
+						<li><a href="@Url.Action("ComingSoon", "Home")">Terms of Service</a></li>
+						<li><a href="@Url.Action("ComingSoon", "Home")">Privacy Policy</a></li>
+						<li><a href="@Url.Action("ComingSoon", "Home")">Sitemap</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<ul>
+						<li>@Html.ActionLink("About", "About", "Home")</li>
+						<li><a href="@Url.Action("FAQ", "Home")">FAQ</a></li>
+						<li><a href="@Url.Action("ComingSoon", "Home")">Blog</a></li>
+						<li><a href="@Url.Action("ComingSoon", "Home")">Careers</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<ul>
+						<li>@Html.ActionLink("Connect", "Contact", "Home")</li>
+						<li><a href="tel:1-555-555-5555">Sales: (555) 555-55555</a></li>
+						<li><a href="tel:1-555-555-5555">Support: (555) 555-5555</a></li>
+						<li>555 Parham Rd.<br />Beverly Hills, CA 90210</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,141 @@
+﻿
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+	height: 100vh;
+	background: linear-gradient( #ffffff, rgba(255,117,34,0.60));
+	background-attachment: fixed;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+	white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+	max-width: 280px;
+}
+
+a {
+	font-family: Montserrat, sans-serif;
+}
+
+.navbar {
+	background-color: #036303;
+	position: fixed;
+	top: 0;
+	z-index: 3;
+	margin-bottom: 0;
+	border-radius: 0;
+	border-bottom: 0px !important;
+	width: 100%;
+}
+
+#navlogo {
+	margin-top: -7px;
+}
+
+.navbar a {
+	border-radius: 60px;
+	font-size: 1.2em;
+	color: white !important;
+	margin: 3px;
+}
+
+.navbar a:hover, .navbar > li > a:hover {
+	color: #B44400 !important;
+	background-color: #F2FAE1 !important;
+}
+
+#navbar-brand:hover {
+	background-color: #ff995a !important;
+}
+
+.navbar-toggle .icon-bar {
+	background-color: #003300;
+}
+
+button.navbar-toggle {
+	border-radius: 60px;
+}
+
+button.navbar-toggle:hover {
+		background-color: #F2FAE1
+	}
+
+h2 {
+	font-family: Montserrat, sans-serif;
+}
+
+table {
+	background: #F2FAE1;
+	border: 3px solid #024002;
+	font-family: 'Open Sans', sans-serif;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+
+th {
+	background-color: #024002;
+	color: white;
+	padding-top: -1px;
+}
+
+tr:nth-of-type(2n+0) {
+	background-color: white;
+}
+
+.clickme {
+	color: white;
+	font-weight:bold;
+	background-color: dodgerblue;
+	font-family: Montserrat, sans-serif;
+	padding: 6px 8px;
+	border: 2px solid forestgreen;
+	border-radius: 20px;
+	margin-bottom:20px;
+}
+
+.clickme:hover {
+		color: gold;
+		background-color: #176FC4 ;
+		text-decoration:none;
+		font-weight: bold;
+	}
+
+#myInput {
+	margin-bottom: 20px;
+}
+
+.reglink {
+	color: #176FC4;
+}
+
+.clickdelete {
+	color: white;
+	font-weight: bold;
+	background-color: tomato;
+	font-family: Montserrat, sans-serif;
+	padding: 6px 8px;
+	border: 2px solid forestgreen;
+	border-radius: 20px;
+	margin-bottom: 20px;
+}
+
+.clickdelete:hover {
+	color: greenyellow;
+	background-color: firebrick;
+	text-decoration: none;
+	font-weight: bold;
+}
